@@ -1,0 +1,36 @@
+<h1><%=@post.id%>번 post를 수정할 화면입니다.</h1>
+
+<form action="/concert_infos/update/<%=@post.id%>" method='post'>
+    
+    <p>콘서트 이름</p>
+    <input type="text" name="input_title" value =<%=@post.name%> >
+    <p>콘서트 내용</p>
+    <input type="text" name="input_content">
+    <p>콘서트 장소</p>
+    <input type="text" name="input_place">
+    <p>콘서트 가격</p>
+    <input type="text" name="input_price">
+    <p>콘서트 시작일</p>
+    <input type="text" name="input_start_at">
+    <p>콘서트 마감일</p>
+    <input type="text" name="input_finish_at">
+    <p>국내 = 1</p>
+    <input type="checkbox" name="input_sort01">
+    <p>국외 = 1</p>
+    <input type="checkbox" name="input_sort02">
+    <p>단독 = 1</p>
+    <input type="checkbox" name="input_sort01">
+    <p>페스티벌 = 1</p>
+    <input type="checkbox" name="input_sort02">
+    <p>메인 라인업</p>
+    <input type="text" name="input_main_lineup">
+    <p>서브 라인업</p>
+    <input type="text" name="input_sub_lineup">
+    
+    <p>제출</p>
+    <input type="submit">
+    
+</form>
+
+<a href = "/concert_infos/main_view"> 목록으로 이동</a>
+<a href = "/concert_infos/destroy"> 삭제하기</a>

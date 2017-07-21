@@ -1,0 +1,35 @@
+
+<H1> this is show.html.erb view</H1>
+<h2>세부내용 입니다.</h2>
+
+<h1> <%= @post.id%>번 post 입니다.</h1>
+<h2> 제목 : <%= @post.name %></h2>
+<h2> 내용 : <%= @post.content %></h2>
+<h2> 메인 라인업 : <%= @post.main_lineup %></h2>
+<h2> 서브 라인업 : <%= @post.sub_lineup %></h2>
+<h2> 가격 : <%= @post.price%></h2>
+
+
+<hr>
+<h4><%= @post.id %>번 글 댓글입니다.</h4>
+
+<% @comments.each do |comment| %>
+    <%# @comment = comment %>
+    <h6> 번호 : <%=comment.id %> 이름 : <%= comment.name %></h6>
+    <h6>내용 : <%= comment.content %></h6>
+    <%# if @comment.is_a?(1)%>
+    <a href = "/concert_infos/show/<%= @post.id%>/destroy/<%=comment.id %>" data-confirm="댓글을 삭제하시겠습니까?" data-method="post"> 삭제하기</a>
+    <% end %>
+<hr>
+
+<form action="/concert_infos/show/<%= @post.id%>/comments/create" method='post'>
+    작성자 : <input type='text' name='input_name'>
+    내용 : <input type='text' name='input_comment'>
+    <input type='submit'>
+</form>
+<hr>
+
+
+<a href = "/concert_infos/destroy/<%=@post.id %>" data-confirm="삭제하시겠습니까?" data-method="post"> 삭제하기</a>
+<a href = "/concert_infos/edit/<%=@post.id %>"> 수정하기</a>
+<a href = "/"> <p>목록으로 가기</p></a>
