@@ -2,18 +2,14 @@
 <h1>this is main view of our party planner. </h1>
 
 <h1> 찾아볼 콘서트의 기준을 설정하시고, 보기를 클릭하세요.</h1>
-<form action="/concert_infos/main_view" method ='post'>
-  <input id = 'sort01' type="checkbox" name='sort01' value=1 checked="checked">국내
-  <!--<input id = 'sort01_hidden' type='hidden' name='sort01' value=0>-->
-  <input id = 'sort02' type="checkbox" name='sort02' value=1 checked="checked">국외<br>
-  <!--<input id = 'sort02_hidden' type='hidden' name='sort02'  value=0>-->
-   <input id = 'sort03' type="checkbox" name='sort03' value=1 checked="checked">단독
-  <!--<input id = 'sort01_hidden' type='hidden' name='sort01' value=0>-->
-   <input id = 'sort04' type="checkbox" name='sort04' value=1 checked="checked">페스티벌
-  <!--<input id = 'sort01_hidden' type='hidden' name='sort01' value=0>-->
-  
-  <input type="submit" value="기준대로 찾기">
-</form>
+    <%= form_tag "/concert_infos/main_view", method:"post" do %>
+  <!--<input id = 'sort01' type="checkbox" name='sort01' value=1 checked="checked">국내-->
+    <%= check_box_tag 'sort01', 1, true%> 국내
+    <%= check_box_tag 'sort02', 1, true%> 국외<br>
+    <%= check_box_tag 'sort03', 1, true%> 단독
+    <%= check_box_tag 'sort04', 1, true%>페스티벌
+    <%= submit_tag '찾기' %>
+<% end %>
 
 <% @posts.each do |post| %>
     <a href="/concert_infos/show/<%= post.id %>">

@@ -1,36 +1,40 @@
 <h1><%=@post.id%>번 post를 수정할 화면입니다.</h1>
 
-<form action="/concert_infos/update/<%=@post.id%>" method='post'>
+<!--<form action="/concert_infos/update/<%=@post.id%>" method='post'>-->
+<%= form_tag "/concert_infos/update/#{params[:post_id]}", method:"post" do %>
     
     <p>콘서트 이름</p>
-    <input type="text" name="input_title" value =<%=@post.name%> >
-    <p>콘서트 내용</p>
-    <input type="text" name="input_content">
+    <%= text_field_tag 'input_title', "#{params[@post.name]}", style: "width:33%" %>
+    <!--<input type="text" name="input_title" value =<%=@post.name%> >-->
+ <p>콘서트 내용</p>
+    <%= text_area_tag 'input_content', nil, style: "width:33%" %> 
     <p>콘서트 장소</p>
-    <input type="text" name="input_place">
+    <%= text_field_tag 'input_place', nil, style: "width:33%" %>
     <p>콘서트 가격</p>
-    <input type="text" name="input_price">
+    <%= text_field_tag 'input_price', nil, style: "width:33%" %>
     <p>콘서트 시작일</p>
-    <input type="text" name="input_start_at">
+    <%= text_field_tag 'input_start_at', nil, style: "width:33%" %>
     <p>콘서트 마감일</p>
-    <input type="text" name="input_finish_at">
-    <p>국내 = 1</p>
-    <input type="checkbox" name="input_sort01">
-    <p>국외 = 1</p>
-    <input type="checkbox" name="input_sort02">
-    <p>단독 = 1</p>
-    <input type="checkbox" name="input_sort01">
-    <p>페스티벌 = 1</p>
-    <input type="checkbox" name="input_sort02">
-    <p>메인 라인업</p>
-    <input type="text" name="input_main_lineup">
-    <p>서브 라인업</p>
-    <input type="text" name="input_sub_lineup">
+    <%= text_field_tag 'input_finish_at', nil, style: "width:33%" %>
+   <p>국내 콘서트 입니까?</p> 
+    <%=hidden_field_tag 'input_sort01', 0 %>
+    <%= check_box_tag 'input_sort01', 1, false%>
+    <p>해외 콘서트 입니까?</p>
+    <%=hidden_field_tag 'input_sort02', 0 %>
+    <%= check_box_tag 'input_sort02', 1, false%>
+    <p> 단독 콘서트 입니까?</p>
+    <%=hidden_field_tag 'input_sort03', 0 %>
+    <%= check_box_tag 'input_sort03', 1, false%>
+    <p>페스티벌 입니까?</p>
+    <%=hidden_field_tag 'input_sort04', 0 %>
+    <%= check_box_tag 'input_sort04', 1, false%>
     
-    <p>제출</p>
-    <input type="submit">
-    
-</form>
+    <p>메인라인업</p>    
+    <%= text_field_tag 'input_main_lineup', nil, style: "width:33%" %>
+    <p>서브라인업</p>
+    <%= text_field_tag 'input_sub_lineup', nil, style: "width:33%" %>
+    <%= submit_tag 'submit!' %>
+    <% end %>
 
 <a href = "/concert_infos/main_view"> 목록으로 이동</a>
 <a href = "/concert_infos/destroy"> 삭제하기</a>
