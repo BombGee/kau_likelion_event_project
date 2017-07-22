@@ -7,6 +7,16 @@
     <%= check_box_tag 'sort01', 1, true%> 국내
     <%= check_box_tag 'sort02', 1, true%> 국외<br>
     <%= check_box_tag 'sort03', 1, true%> 단독
+    <%= check_box_tag 'sort04', 1, true%>페스티벌!!!!!!
+    <%= submit_tag '찾기' %>
+<% end %>
+
+<h1> 검색할 이벤트 참가자, 혹은 키워들</h1>
+    <%= form_tag "/concert_infos/main_view", method:"post" do %>
+  <!--<input id = 'sort01' type="checkbox" name='sort01' value=1 checked="checked">국내-->
+    <%= check_box_tag 'sort01', 1, true%> 국내
+    <%= check_box_tag 'sort02', 1, true%> 국외<br>
+    <%= check_box_tag 'sort03', 1, true%> 단독
     <%= check_box_tag 'sort04', 1, true%>페스티벌
     <%= submit_tag '찾기' %>
 <% end %>
